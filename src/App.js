@@ -10,7 +10,7 @@ export default function App() {
         </div>
         <footer>
           <a
-            href="https://github.com/helketari/vanilla-weather-app"
+            href="https://github.com/helketari/react-weather-final"
             target="_blank"
             rel="noreferrer"
           >
