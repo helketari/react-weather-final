@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import TimeStamp from "./TimeStamp";
 
 export default function Weather() {
   const [ready, setReady] = useState(false);
@@ -6,14 +8,14 @@ export default function Weather() {
 
   function handleResponse(response) {
     setWeather({
+      ready: true,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
       description: response.data.weather[0].description,
       city: response.data.name,
+      date: new Date(response.data.dt * 1000),
     });
-
-    setReady(true);
 
     if (ready) {
       return (
@@ -27,7 +29,9 @@ export default function Weather() {
             <input type="submit" value="Search" />
           </form>
           <h1>{city}</h1>
-          <h2>Time</h2>
+          <h2>
+            <TimeStamp date={weather.date} />
+          </h2>
           <div className="row">
             <div className="col">
               <ul>
