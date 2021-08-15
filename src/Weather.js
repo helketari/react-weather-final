@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import TimeStamp from "./TimeStamp";
+import CurrentWeather from "./CurrentWeather";
 
 export default function Weather() {
-  const [ready, setReady] = useState(false);
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
     setWeather({
@@ -17,42 +17,39 @@ export default function Weather() {
       date: new Date(response.data.dt * 1000),
     });
 
-    if (ready) {
+    function search() {
+      let apiKey = "14b04c33525e63089effa5297a33ce92";
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+      axios.get(apiUrl).then(handleResponse);
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      search();
+    }
+
+    function updatecity(event) {
+      setCity(event.target.value);
+    }
+
+    if (weather.ready) {
       return (
         <div className="weather">
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="search"
               placeholder="Enter a city"
+              autofocus="on"
               onChange={updateCity}
             />
             <input type="submit" value="Search" />
           </form>
-          <h1>{city}</h1>
-          <h2>
-            <TimeStamp date={weather.date} />
-          </h2>
-          <div className="row">
-            <div className="col">
-              <ul>
-                <li>{Math.round(weather.temperature)}˚C</li>
-                <li>{weather.description}</li>
-              </ul>
-              <div className="col"></div>
-              <ul>
-                <li>Humidity: {Math.round(weather.humidity)}%</li>
-                <li>Wind speed: {weather.wind} km/h</li>
-              </ul>
-            </div>
-          </div>
+          <CurrentWeather data={weather} />
         </div>
       );
     } else {
-      let apiKey = "14b04c33525e63089effa5297a33ce92";
-      let city = "London";
-      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-      axios.get(apiUrl).then(handleResponse);
+      search();
       return "Loading...";
     }
   }
