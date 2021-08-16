@@ -1,5 +1,7 @@
 import React from "react";
 import TimeStamp from "./TimeStamp";
+import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function CurrentWeather(props) {
   return (
@@ -9,12 +11,18 @@ export default function CurrentWeather(props) {
         <TimeStamp date={props.data.date} />
       </h2>
       <div className="row">
-        <div className="col">
+        <div className="col-6">
           <ul>
-            <li>{Math.round(props.data.temperature)}˚C</li>
+            <li>
+              <WeatherTemperature celsius={props.data.temperature} />
+            </li>
+            <li>
+              <WeatherIcon code={props.data.icon} />
+            </li>
             <li className="text-capitalize">{props.data.description}</li>
           </ul>
-          <div className="col"></div>
+        </div>
+        <div className="col-6">
           <ul>
             <li>Humidity: {Math.round(props.data.humidity)}%</li>
             <li>Wind speed: {props.data.wind} km/h</li>

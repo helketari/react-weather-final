@@ -1,7 +1,8 @@
 .container {
   font-family: "Srisakdi", cursive;
   color: #dc6b9c;
-  max-width: 450px;
+  max-width: 600px;
+  max-height: 600px;
   margin-left: 20px;
   margin-top: 20px;
 }
