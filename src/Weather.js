@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import CurrentWeather from "./CurrentWeather";
+import "./Weather.css";
 
 export default function Weather(props) {
   const [weather, setWeather] = useState({ ready: false });
@@ -44,7 +45,7 @@ export default function Weather(props) {
             autofocus="on"
             onChange={updateCity}
           />
-          <input type="submit" value="Search" />
+          <input type="submit" value="Search" className="searchButton" />
         </form>
         <CurrentWeather data={weather} />
       </div>

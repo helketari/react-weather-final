@@ -1,0 +1,10 @@
+form {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.searchButton {
+  background: #f6a9ce;
+  border-radius: 4px;
+  margin-left: 5px;
+}
