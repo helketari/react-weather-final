@@ -13,7 +13,7 @@ export default function App() {
           <a
             href="https://github.com/helketari/react-weather-final"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             Open-source code
           </a>{" "}
