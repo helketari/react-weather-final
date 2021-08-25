@@ -6,6 +6,7 @@ import "./Forecast.css";
 export default function Forecast(props) {
   let [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState(null);
+
   function handleResponse(response) {
     setForecast(response.data.daily);
     setLoaded(true);
@@ -15,9 +16,15 @@ export default function Forecast(props) {
     return (
       <div className="Forecast">
         <div className="row">
-          <div className="col">
-            <ForecastDay data={forecast[0]} />
-          </div>
+          {forecast.map(function (dailyforecast, index) {
+            if (index < 5) {
+              return (
+                <div className="col">
+                  <ForecastDay data={dailyforecast} />
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     );
