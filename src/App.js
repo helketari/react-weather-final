@@ -7,7 +7,7 @@ export default function App() {
     <div className="App">
       <div className="container">
         <div className="weatherWrapper">
-          <Weather defaultCity="London" />
+          <Weather defaultCity="Sea Isle City" />
         </div>
         <footer>
           <a
@@ -17,7 +17,7 @@ export default function App() {
           >
             Open-source code
           </a>{" "}
-          by Jessica Brosvic
+          <span className="coder">by Jessica Brosvic</span>
         </footer>
       </div>
     </div>

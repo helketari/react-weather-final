@@ -1,7 +1,6 @@
 import React from "react";
 import TimeStamp from "./TimeStamp";
 import WeatherIcon from "./WeatherIcon";
-import WeatherTemperature from "./WeatherTemperature";
 import "./CurrentWeather.css";
 
 export default function CurrentWeather(props) {
@@ -17,7 +16,10 @@ export default function CurrentWeather(props) {
             <div className="float-left">
               <WeatherIcon code={props.data.icon} size={52} />
             </div>
-            <WeatherTemperature celsius={props.data.temperature} />
+            <div className="temperature">
+              {Math.round(props.data.temperature)}{" "}
+              <span className="unit">˚C</span>{" "}
+            </div>
             <div className="text-capitalize">{props.data.description}</div>
           </div>
         </div>

@@ -1,14 +1,21 @@
 .container {
   font-family: "Srisakdi", cursive;
-  color: #dc6b9c;
-  max-width: 600px;
-  max-height: 600px;
+  color: white;
+  max-width: 700px;
+  max-height: 650px;
   margin: 0 auto;
+  padding-top: 10px;
 }
 
 .weatherWrapper {
-  background-color: #7beaf3;
-  border: 2px solid #f6a9ce;
+  background: linear-gradient(
+    106.7deg,
+    rgb(251, 0, 145) -2.6%,
+    rgb(251, 134, 145) 31%,
+    rgb(251, 158, 145) 45.8%,
+    rgb(251, 218, 145) 100.1%
+  );
+  border: 2px solid white;
   border-radius: 10px;
 }
 
@@ -17,5 +24,13 @@ h1 {
 }
 
 a {
-  color: #f6a9ce;
+  color: #f29b91;
+}
+
+a:hover {
+  color: #f7c091;
+}
+
+.coder {
+  color: #ec4f90;
 }
